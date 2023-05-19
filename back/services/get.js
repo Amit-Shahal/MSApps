@@ -26,13 +26,14 @@ function getNine(data, page) {
   const output = {
     data: data.slice((page - 1) * 9, page * 9),
     next: data.length > page * 9,
+    page: page,
   };
   return output;
 }
 
-function sortId(data, order) {
+function sortId(data) {
   return data.sort((a, b) => {
-    return order === 'asc' ? a.id - b.id : b.id - a.id;
+    return a.id - b.id;
   });
 }
 

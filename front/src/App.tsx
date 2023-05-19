@@ -1,25 +1,26 @@
 import { useEffect } from 'react';
 //redux
-import { useAppSelector, useAppDispatch } from './app/hooks';
-import { selectUsers, fetchUsers } from './features/counter/userSlice';
+import { useAppDispatch } from './app/hooks';
+import { fetchImages } from './features/counter/imageSlice';
 //components
+import Main from './components/Main';
 
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchUsers());
+    //init req
+    dispatch(fetchImages({ page: 1, category: '', sort: false }));
   }, []);
-
-  const data = useAppSelector(selectUsers);
 
   return (
     <div>
-      <div>
-        {data.loading && <div>loading...</div>}
-        {!data.loading && data.status === 'failed' ? (
-          <div>Error: {data.status}</div>
-        ) : null}
-        {!data.loading ? <h1>hi</h1> : null}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Main />
       </div>
     </div>
   );

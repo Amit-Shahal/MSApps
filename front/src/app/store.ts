@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import userReducer from '../features/counter/userSlice';
+import imageReducer from '../features/counter/imageSlice';
 
 export const store = configureStore({
   reducer: {
-    users: userReducer,
+    image: imageReducer,
   },
 });
 
